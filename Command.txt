@@ -1,0 +1,9 @@
+inside the starter-files folder
+// brew install yarn
+// yarn --version >> to check if it's installed and the version of yarn
+
+to start the application:- 
+// yarn start
+
+// Local:            http://localhost:3000
+// On Your Network:  http://192.168.68.65:3000
