@@ -3,7 +3,7 @@
 ---
 
 <div>
-<b>Quick menu:</b>
+<!-- <b>Quick menu:</b>
 <a href="https://theultimateapichallenge.com/weather-api-react" target="_blank" rel="noopener noreferrer"
     style="padding:0.35rem 0.7rem;
     color: black;
@@ -25,8 +25,15 @@
     border-radius:10px;
     font-size:0.85rem;
     font-weight:600;">YouTube Video</a> 
+ -->
+    <a href="https://www.metaweather.com/api" target="_blank" rel="noopener noreferrer"
+        style="padding:0.35rem 0.7rem;
+        color: black;
+        background: #F1DEDE;
+        border-radius:10px;
+        font-size:0.85rem;
+        font-weight:600;">Official API Docs</a> 
 </div>
-
 ---
 
 ## Description
