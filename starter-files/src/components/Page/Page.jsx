@@ -22,16 +22,18 @@ const Page = () => {
     return (
         <Fragment>
             <Header />
-            <div className={`${styles.box} position-relative`}>
-                {/* Form */}
-                {/* show form if it's not loading */}
-                {!isLoading && <Form submitSearch={onSubmit} />}
-                {/* Error */}
-                {/* If this Error is true then only display error message */}
-                {isError && <Error message={isError} />}
-                {/* Loader */}
-                {isLoading && <Loader />}
-            </div>
+            {!forecast && (
+                 <div className={`${styles.box} position-relative`}>
+                    {/* Form */}
+                    {/* show form if it's not loading */}
+                    {!isLoading && <Form submitSearch={onSubmit} />}
+                    {/* Error */}
+                    {/* If this Error is true then only display error message */}
+                    {isError && <Error message={isError} />}
+                    {/* Loader */}
+                    {isLoading && <Loader />}
+                </div>
+            )}
             {/* Forecast */} 
             {forecast && <Forecast />}
            

@@ -4,6 +4,12 @@ import { useState } from "react";
 import { ListGroup } from "react-bootstrap";
 import axios from 'axios';
 
+// import helper functions from helper folder
+import getCurrentDayForecast from "../helpers/getCurrentDayForecast";
+import getCurrentDayDetailedForecast from "../helpers/getCurrentDayDetailedForecast";
+import getUpcomingDaysForecast from "../helpers/getUpcomingDaysForecast";
+
+// global URL variables
 const BASE_URL = 'https://www.metaweather.com/api/location';
 
 // cross domain issues -> means that api and our program are not on the same domain
@@ -47,6 +53,17 @@ const useForecast = () =>{
         }
         return data[0];
     };
+
+    // gether the deatils from data / helper function files
+    const gatherForecastData = data =>{
+        const currentDay = getCurrentDayForecast(data.consolidated_weather[0],data.title);
+        const currentDayDetails = getCurrentDayDetailedForecast(data.consolidated_weather[0]);
+        const upcomingDays = getUpcomingDaysForecast(data.consolidated_weather);
+
+        seForecast({currentDay,currentDayDetails,upcomingDays});
+        setLoading(false);
+    };
+
     // location value from Form is passed to the page and then in useforecast
     const submitRequest = async location => {
         // set a loader -> True
@@ -61,8 +78,9 @@ const useForecast = () =>{
         const data = getForecastData(response.woeid);
         
         if(!data) return;
-        console.log({data});
-        
+        // console.log({data});
+        gatherForecastData();
+
     };
 
 
@@ -72,7 +90,7 @@ const useForecast = () =>{
         isError,
         isLoading,
         forecast,
-        submitRequest
+        submitRequest,
     };
 };
 
