@@ -1,8 +1,7 @@
-// HOOK
-
 import { useState } from "react";
 import { ListGroup } from "react-bootstrap";
 import axios from 'axios';
+// HOOK
 
 // import helper functions from helper folder
 import getCurrentDayForecast from "../helpers/getCurrentDayForecast";
@@ -55,12 +54,12 @@ const useForecast = () =>{
     };
 
     // gether the deatils from data / helper function files
-    const gatherForecastData = data =>{
+    const gatherForecastData = (data) =>{
         const currentDay = getCurrentDayForecast(data.consolidated_weather[0],data.title);
         const currentDayDetails = getCurrentDayDetailedForecast(data.consolidated_weather[0]);
         const upcomingDays = getUpcomingDaysForecast(data.consolidated_weather);
 
-        seForecast({currentDay,currentDayDetails,upcomingDays});
+        seForecast({ currentDay, currentDayDetails, upcomingDays});
         setLoading(false);
     };
 
@@ -75,11 +74,11 @@ const useForecast = () =>{
         const response = await getWoeid(location);
         // when we want it to wait for a functionality to complete use await with async as shown
         if(!response?.woeid) return;
-        const data = getForecastData(response.woeid);
+        const data = await getForecastData(response.woeid);
         
         if(!data) return;
         // console.log({data});
-        gatherForecastData();
+        gatherForecastData({data});
 
     };
 

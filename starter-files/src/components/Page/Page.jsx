@@ -16,7 +16,7 @@ const Page = () => {
     // value is being passed from the form
     const onSubmit = (value) =>{
         // console.log({value});
-        submitRequest(value)
+        submitRequest(value);
     }
     // a hook can never be called in a conditional block 
     return (
@@ -35,7 +35,7 @@ const Page = () => {
                 </div>
             )}
             {/* Forecast */} 
-            {forecast && <Forecast />}
+            {forecast && <Forecast forecast={forecast} />}
            
         </Fragment>
     );
