@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
 // extracting from input field -> import hook (useState);
+import PropTypes from 'prop-types';
 import styles from './Form.module.css';
 
-const Form = () => {
+const Form = ({submitSearch}) => {
     const [location, setLocation] = useState('');
     // location -> initialize the state 
     // setlocation is a function by hook to change the location.
@@ -13,6 +14,7 @@ const Form = () => {
         e.preventDefault();
         // console.log({location});
         if(!location || location==='') return;
+        submitSearch(location);
     }
     return (
         <form onSubmit ={onSubmit}>

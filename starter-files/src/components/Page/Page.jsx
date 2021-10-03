@@ -12,7 +12,12 @@ import styles from './Page.module.css';
 
 const Page = () => {
     // way to use hooks -> 
-    const {isError, isLoading, forecast} = useForecast();
+    const {isError, isLoading, forecast,submitRequest} = useForecast();
+    // value is being passed from the form
+    const onSubmit = (value) =>{
+        // console.log({value});
+        submitRequest(value)
+    }
     // a hook can never be called in a conditional block 
     return (
         <Fragment>
@@ -20,14 +25,14 @@ const Page = () => {
             <div className={styles.box}>
                 {/* Form */}
                 {/* show form if it's not loading */}
-                {!isLoading && <Form />}
+                {!isLoading && <Form submitSearch={onSubmit} />}
                 {/* Error */}
                 {/* If this Error is true then only display error message */}
-                {isError && <Error />}
+                {isError && <Error message={isError} />}
                 {/* Loader */}
                 {isLoading && <Loader />}
             </div>
-            {/* Forecast */}
+            {/* Forecast */} 
             {forecast && <Forecast />}
            
         </Fragment>

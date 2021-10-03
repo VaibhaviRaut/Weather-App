@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ListGroup } from "react-bootstrap";
 
 const useForecast = () =>{
     //console.log('Hello I am the hook!');
@@ -8,6 +9,10 @@ const useForecast = () =>{
 
 
     // call the api
+    // location value from Form is passed to the page and then in useforecast
+    const submitRequest = (location) =>{
+        console.log({location});
+    }
 
 
     // since this is a javascript function we return
@@ -15,7 +20,8 @@ const useForecast = () =>{
     return{
         isError,
         isLoading,
-        forecast
+        forecast,
+        submitRequest
     };
 }
 
