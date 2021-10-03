@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 // extracting from input field -> import hook (useState);
 import PropTypes from 'prop-types';
 import styles from './Form.module.css';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 const Form = ({submitSearch}) => {
     const [location, setLocation] = useState('');
@@ -34,5 +35,9 @@ const Form = ({submitSearch}) => {
         </form>
     );
 };
+
+Form.propTypes = {
+    submitSearch : PropTypes.func.isRequired,
+}
 
 export default Form;
